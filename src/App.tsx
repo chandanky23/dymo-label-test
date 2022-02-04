@@ -1,23 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { getAvailablePrinter } from './printeLabels';
 
 function App() {
+
+  const getPrinters = () => {
+    const printer = getAvailablePrinter()
+    console.log(printer)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button
+          style={{ width: '200px', height: '48px', cursor: 'pointer', backgroundColor: 'black', border: 'none', color: 'white', borderRadius: 4 }}
+          onClick={getPrinters}
+        >Generate Label</button>
       </header>
     </div>
   );
