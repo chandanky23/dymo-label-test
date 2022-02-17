@@ -48,7 +48,7 @@ export const printLabels = async (printerName: string, shipmentId: string) => {
   }
 }
 
-export const getAvailablePrinter = () => {
+export const getAvailablePrinter = async () => {
   try {
     const availabelPrinters = dymo.label.framework.getPrinters() as Printer[]
     const dymoLabelPrinter = availabelPrinters.find((printer) => printer.printerType === 'LabelWriterPrinter')
