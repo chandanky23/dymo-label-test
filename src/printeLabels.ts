@@ -1,4 +1,3 @@
-
 const getXmlWithImageObjectToPrint = (base64Image: string) => {
   return `<?xml version="1.0" encoding="utf-8"?>
   <DieCutLabel Version="8.0" Units="twips" MediaType="Default">
@@ -49,18 +48,25 @@ export const printLabels = async (printerName: string, shipmentId: string) => {
 }
 
 export const getAvailablePrinter = async () => {
+
+  // try {
+  //   const availabelPrinters = dymo.label.framework.getPrinters() as Printer[]
+  //   const dymoLabelPrinter = availabelPrinters.find((printer) => printer.printerType === 'LabelWriterPrinter')
+  //   console.log(dymoLabelPrinter)
+  //   if (!dymoLabelPrinter) {
+  //     return 'No DYMO printers available.'
+  //   }
+  //   if (!dymoLabelPrinter.isConnected) {
+  //     return 'DYMO printer available but not connected.'
+  //   }
+  //   return dymoLabelPrinter.name
+  // } catch (error) {
+  //   console.error('error--', error as string | Error)
+  // }
   try {
-    const availabelPrinters = dymo.label.framework.getPrinters() as Printer[]
-    const dymoLabelPrinter = availabelPrinters.find((printer) => printer.printerType === 'LabelWriterPrinter')
-    console.log(dymoLabelPrinter)
-    if (!dymoLabelPrinter) {
-      throw 'No DYMO printers available.'
-    }
-    if (!dymoLabelPrinter.isConnected) {
-      throw 'DYMO printer available but not connected.'
-    }
-    return dymoLabelPrinter.name
-  } catch (error) {
-    console.error('error--', error as string | Error)
-  }
+    console.log('here')
+    const printer = dymo.label.framework.getLabelWriterPrinters()
+    console.log(printer)
+    return printer
+  } catch(e) {console.log(e)}
 }

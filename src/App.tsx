@@ -1,12 +1,30 @@
 import React from 'react';
 import './App.css';
 import { getAvailablePrinter } from './printeLabels';
+import { useWorker } from "@koale/useworker"
+import WorkerBuilder from './worker-builder'
+//@ts-ignore
+import TestWorker from './testWorker'
+
+const instance = new WorkerBuilder(TestWorker)
 
 function App() {
 
-  const getPrinters = () => {
-    const printer = getAvailablePrinter()
-    console.log(printer)
+  // const [workerFn, { status: sortWorkerStatus, kill: killWorker }] = useWorker(TestWorker)
+
+  
+  const getPrinters = async () => {
+    const printer = await getAvailablePrinter()
+    console.log('printer--Main', printer)
+    // const printer = await workerFn()
+    // console.log(printer)
+    // console.log(sortWorkerStatus)
+    // instance.postMessage('dymo')
+    // instance.onmessage = (message) => {
+    //   if (message) {
+    //     console.log('Message from worker: ', message.data)
+    //   }
+    // }
   }
   return (
     <div className="App">
