@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { getAvailablePrinter } from './printeLabels';
+import { getAvailablePrinter, printLabels } from './printeLabels';
 import { useWorker } from "@koale/useworker"
 import WorkerBuilder from './worker-builder'
 //@ts-ignore
@@ -16,6 +16,9 @@ function App() {
   const getPrinters = async () => {
     const printer = await getAvailablePrinter()
     console.log('printer--Main', printer)
+    if (printer) {
+      printLabels(printer, '876543')
+    }
     // const printer = await workerFn()
     // console.log(printer)
     // console.log(sortWorkerStatus)
