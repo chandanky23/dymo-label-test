@@ -2057,12 +2057,12 @@
     "POST" == d &&
       e.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     e.send(h);
-    // if (200 != e.status && "chandan")
-    //   throw (
-    //     ((a = e.responseText),
-    //     (a = a.split(":", 1)[0]),
-    //     Error("" + a + "\n\n" + e.responseText + ": " + e.statusText))
-    //   );
+    if (200 != e.status)
+      throw (
+        ((a = e.responseText),
+        (a = a.split(":", 1)[0]),
+        Error("" + a + "\n\n" + e.responseText + ": " + e.statusText))
+      );
     return e.responseText;
   }
   function Ud(a, b) {
