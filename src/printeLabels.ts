@@ -39,7 +39,7 @@ export const printLabels = async (printerName: string, shipmentId: string) => {
   try {
     const base64Image = ''
     const labelXmlToPrint = getXmlWithImageObjectToPrint(base64Image)
-    const label = dymo.label.framework.openLabelXml(labelXmlToPrint)
+    // const label = dymo.label.framework.openLabelXml(labelXmlToPrint)
     dymo.label.framework.printLabel(printerName, '', labelXmlToPrint, '')
     console.log(`Successfully printed label through printer for shipment id ${shipmentId}`)
   } catch (error) {
